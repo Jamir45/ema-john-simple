@@ -1,0 +1,14 @@
+.productContainer{
+    max-width: 1366px;
+    display: flex;
+}
+.texContainer{
+    width: 70%;
+    border-right: 1px solid gray;
+    margin-left: 100px;
+    padding: 20px;
+}
+.cartContainer{
+    width: 20%;
+    margin-left: 20px;
+}

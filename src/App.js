@@ -1,24 +1,54 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './componant/Header/Header';
+import Shop from './componant/Shop/Shop';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Review from './componant/Review/Review';
+import Inventory from './componant/Header/Inventory/Inventory';
+import Notfound from './Notfound/Notfound';
+import Details from './ProductDetails/Details';
+import Login from './componant/Login/Login';
+import { AuthContextProvider } from './componant/Login/useAuth';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+      <AuthContextProvider>
+        <Header></Header>
+        <Router>
+          <Switch>
+            <Route path="/shop">
+              <Shop></Shop>
+            </Route>
+            <Route path="/review"> 
+              <Review></Review>
+            </Route>
+            <Route path="/inventory">
+              <Inventory></Inventory>
+            </Route>
+            <Route exact path="/"> 
+              <Shop></Shop>
+            </Route>
+            <Route path="/product/:key">
+              <Details></Details>
+            </Route>
+            <Router path="/login">
+              <Login></Login>
+            </Router>
+            <Route path="*">
+              <Notfound></Notfound>
+            </Route>
+          </Switch>
+        </Router>
+      </AuthContextProvider>
+
     </div>
   );
 }

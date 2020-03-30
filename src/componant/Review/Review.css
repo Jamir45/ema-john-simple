@@ -1,0 +1,8 @@
+.container{
+    width: 70%;
+    border-right: 1px solid lightgray;
+}
+.cartContainer2 {
+    width: 20%;
+    margin-left: 30px;
+}
