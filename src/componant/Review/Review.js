@@ -4,9 +4,12 @@ import fakeData from '../../fakeData';
 import Reviewitems from '../Reviewitems/Reviewitems';
 import Cart from '../Cart/Cart';
 import './Review.css'
+import { Link } from 'react-router-dom';
+import { useAuth } from '../Login/useAuth';
 
 
 const Review = () => {
+        const auth = useAuth();
         const [cart, setCart] = useState([]);
         useEffect( ()=> {
         const savedCart = getDatabaseCart();
@@ -38,7 +41,12 @@ const Review = () => {
             </div>
             <div className="cartContainer2">
                <Cart cartItem={cart}></Cart>
-               <button className="Button"> Place Order</button>
+               <Link to="/shipping">
+                    { // এখনে আমরা conditional operator এর সাহায্যে একটি condition লিখেছি । যখন user review page এ থাকবে তখন যদি auth.user সত্যি হয় তাহলে অর্থাৎ যদি user sign in অবস্থায় থাকে তাহলে Place Order button show করবে । আর যদি auth.user মিথ্যা হয় অর্থাৎ sign in করা না থাকে তাহলে Sign in need button show করবে ।
+                        auth.user ? <button className="Button"> Place Order</button> :
+                        <button className="Button"> Sign in need </button>
+                        }
+               </Link>
             </div>
             
         </div>

@@ -13,13 +13,14 @@ import Inventory from './componant/Header/Inventory/Inventory';
 import Notfound from './Notfound/Notfound';
 import Details from './ProductDetails/Details';
 import Login from './componant/Login/Login';
-import { AuthContextProvider } from './componant/Login/useAuth';
+import { AuthContextProvider, PrivateRoute } from './componant/Login/useAuth';
+import Shipping from './componant/Shipping/Shipping';
 
 
 function App() {
   return (
     <div>
-      
+      {/* আমরা useAuth.js file এ AutContextProvider নামে একটি network তৈরি করেছি । তাই এখানে আমরা সেই AutContextProvider টাকে call করে এর ভিতরে website এর সবগুলো component দিয়ে দিয়েছি */}
       <AuthContextProvider>
         <Header></Header>
         <Router>
@@ -39,9 +40,12 @@ function App() {
             <Route path="/product/:key">
               <Details></Details>
             </Route>
-            <Router path="/login">
+            <Route path="/login">
               <Login></Login>
-            </Router>
+            </Route>
+            <PrivateRoute path="/shipping">
+              <Shipping></Shipping>
+            </PrivateRoute>
             <Route path="*">
               <Notfound></Notfound>
             </Route>

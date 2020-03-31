@@ -9,9 +9,8 @@ const Reviewitems = (props) => {
             <p>Price : {price} $ </p>
             <p>Quantity : {quantity}</p>
 
-            <button 
-            className="Button" 
-            onClick={ ()=> props.removeButton(key) }> Remove Order </button>
+            <button className="Button" 
+                onClick={ ()=> props.removeButton(key) }> Remove Order</button>
         </div>
         
     );

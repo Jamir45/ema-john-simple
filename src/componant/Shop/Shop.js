@@ -54,12 +54,10 @@ const Shop = () => {
             </div>
             <div className="cartContainer">
                 <Cart cartItem={cart}>
-                    
-                </Cart>
-                <Link to='/review'>
-                        <button className="Button">Review</button>
+                    <Link to='/review'>
+                            <button className="Button">Review</button>
                     </Link>
-
+                </Cart>
             </div>
         </div>
     );
